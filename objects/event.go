@@ -30,7 +30,6 @@ type Event struct {
 	Celular string `json: "celular, omitempty"`
 
 	Slot *TimeSlot `gorm: embedded" json: "slot, omitempty"`
-
 	Status EventStatus `json: "status, omitempty"`
 
 	Criado time.Time `json: "criado, omitempty"`
