@@ -55,7 +55,7 @@ type DeletRequest struct {
 // Resposta de qualquer solicitaçao de evento
 type EventResponseWrapper struct {
 	Event *Event `json: "event, omitempty"`
-	Events *[]Event `json: "events, omitempty"`
+	Events []*Event `json: "events, omitempty"`
 	Code int `json: "-"`
 }
 
