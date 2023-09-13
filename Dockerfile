@@ -17,9 +17,8 @@ COPY go.sum ./
 # Download de todas as dependencias.
 RUN go mod download
 
-# Now, copy the source code
+# Copia todos os arquivos 
 COPY . .
-
 
 # Build the application.
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ./bin/main .

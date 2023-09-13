@@ -7,34 +7,32 @@ import "time"
 type EventStatus string
 
 const (
-	Original EventStatus = "original"
+	Original  EventStatus = "original"
 	Cancelado EventStatus = "cancelado"
 	Remarcado EventStatus = "remarcado"
 )
 
-
 type TimeSlot struct {
-	StarTime time.Time `json: "star_time, omitempty"`
-	EndTime time.Time `json: "end_time, omitempty"`
+	StarTime time.Time `json:"star_time,omitempty"`
+	EndTime  time.Time `json:"end_time,omitempty"`
 }
 
 // Eventos de objetos da api
 type Event struct {
-	// identificador 
-	ID string `gorm: "primary_key" json: "id, omitempty"`
+	// identificador
+	ID string `gorm:"primary_key" json:"id,omitempty"`
 
-	Nome string `json: "nome, omitempty"`
-	Descricao string `json: "descricao, omitempty"`
-	Website string `json: "website, omitempty"`
-	Endereco string `json: "endereco, omitempty"`
-	Celular string `json: "celular, omitempty"`
+	Nome      string `json:"nome,omitempty"`
+	Descricao string `json:"descricao,omitempty"`
+	Website   string `json:"website,omitempty"`
+	Endereco  string `json:"endereco,omitempty"`
+	Celular   string `json:"celular,omitempty"`
 
-	Slot *TimeSlot `gorm: embedded" json: "slot, omitempty"`
-	Status EventStatus `json: "status, omitempty"`
+	Slot   *TimeSlot   `gorm:"embedded" json:"slot,omitempty"`
+	Status EventStatus `json:"status,omitempty"`
 
-	Criado time.Time `json: "criado, omitempty"`
-	Atualizado time.Time `json: "atualizado, omitempty"`
-	Cancelado time.Time `json: "cancelado,omitempty"`
-	Remarcado time.Time `json: remarcado, omitempty"`
-
+	Criado     time.Time `json:"criado,omitempty"`
+	Atualizado time.Time `json:"atualizado,omitempty"`
+	Cancelado  time.Time `json:"cancelado,omitempty"`
+	Remarcado  time.Time `json:"remarcado,omitempty"`
 }
