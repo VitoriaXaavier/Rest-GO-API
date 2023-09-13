@@ -16,53 +16,53 @@ type GetRequest struct {
 
 // recuperar multiplos eventos
 type ListRequest struct {
-	Limt int `json: "limit"`
-	After string `json: "after"`
-	Nome string `json: "nome"`
+	Limt  int    `json:"limit"`
+	After string `json:"after"`
+	Nome  string `json:"nome"`
 }
 
 // Criar um novo evento
 type CreateRequest struct {
-	Event *Event `json: "event"`
+	Event *Event `json:"event"`
 }
 
-//Atualizar um evento
+// Atualizar um evento
 type UpDateDetailsRequest struct {
-	ID string `json: "id"`
-	Nome string `json: "nome"`
-	Descricao string `json: "descricao"`
-	Website string `json: "website"`
-	Endereco string `json: "endereco"`
-	Celular string `json: "celular"`
+	ID        string `json:"id"`
+	Nome      string `json:"nome"`
+	Descricao string `json:"descricao"`
+	Website   string `json:"website"`
+	Endereco  string `json:"endereco"`
+	Celular   string `json:"celular"`
 }
 
 // Cancela um evento
 type CancelRequest struct {
-	ID string `json: "id"`
+	ID string `json:"id"`
 }
 
 // Remarca um evento
 type RemarcaRequest struct {
-	ID string `json: "id"`
-	NewSlot *TimeSlot `json: "newslot"`
+	ID      string    `json:"id"`
+	NewSlot *TimeSlot `json:"newslot"`
 }
 
 // Deleta um evento
 type DeletRequest struct {
-	ID string `json: "id"`
+	ID string `json:"id"`
 }
 
 // Resposta de qualquer solicitaçao de evento
 type EventResponseWrapper struct {
-	Event *Event `json: "event, omitempty"`
-	Events []*Event `json: "events, omitempty"`
-	Code int `json: "-"`
+	Event  *Event   `json:"event,omitempty"`
+	Events []*Event `json:"events,omitempty"`
+	Code   int      `json:"-"`
 }
 
 // Converte EventResponseWrapper  em json
 func (e *EventResponseWrapper) JSON() []byte {
 	if e == nil {
-		return []byte( "{}")
+		return []byte("{}")
 	}
 	res, _ := json.Marshal(e)
 	return res
