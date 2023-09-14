@@ -44,7 +44,7 @@ type CancelRequest struct {
 // Remarca um evento
 type RemarcaRequest struct {
 	ID      string    `json:"id"`
-	NewSlot *TimeSlot `json:"newslot"`
+	NewSlot *TimeSlot `json:"new_slot"`
 }
 
 // Deleta um evento

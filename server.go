@@ -49,9 +49,9 @@ func RegisterAllRouter(router *mux.Router, hnd handlers.IEventHandler) {
 	// Cancela eventos
 	router.HandleFunc("/event/cancel", hnd.Cancel).Methods(http.MethodPatch)
 	// Atualiza eventos
-	router.HandleFunc("event/details", hnd.UpDateDetails).Methods(http.MethodPut)
+	router.HandleFunc("/event/details", hnd.UpDateDetails).Methods(http.MethodPut)
 	// Remarca eventos
-	router.HandleFunc("event/remarca", hnd.Reschedule).Methods(http.MethodPatch)
+	router.HandleFunc("/event/remarca", hnd.Reschedule).Methods(http.MethodPatch)
 	// Lista eventos 
-	router.HandleFunc("events", hnd.List).Methods(http.MethodGet)
+	router.HandleFunc("/events", hnd.List).Methods(http.MethodGet)
 }

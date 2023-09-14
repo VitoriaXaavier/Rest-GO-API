@@ -172,5 +172,9 @@ func (h *handler) Delete(w http.ResponseWriter, r *http.Request) {
 		WriterError(w, err)
 		return
 	}
+	if err := h.store.Delete(r.Context(), &objects.DeletRequest{ID: id}); err != nil {
+		WriterError(w, err)
+		return
+	}
 	WriterResponse(w,&objects.EventResponseWrapper{})
 }	
