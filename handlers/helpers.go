@@ -5,7 +5,7 @@ import (
 	"log"
 	"net/http"
 	"strconv"
-	"time"
+	//"time"
 	"github.com/VitoriaXaavier/Rest-GO-API/errors"
 	"github.com/VitoriaXaavier/Rest-GO-API/objects"
 )
@@ -59,12 +59,13 @@ func ChekSlot(slot *objects.TimeSlot) error {
 	if slot == nil {
 		return errors.ErrEventTimingIsRequired
 	}
-
-	if !slot.StarTime.After(time.Time{}) {
+	layout := "2006-01-02 15:04:05"
+	if slot.StarTime.IsZero() || slot.StarTime.Format(layout) != slot.StarTime.Format(layout) {
 		return errors.ErrInvalidTimeFormat
 	}
 
-	if !slot.EndTime.After(time.Time{}) {
+	// Verifica se EndTime está no formato desejado
+	if slot.EndTime.IsZero() || slot.EndTime.Format(layout) != slot.EndTime.Format(layout) {
 		return errors.ErrInvalidTimeFormat
 	}
 	return nil

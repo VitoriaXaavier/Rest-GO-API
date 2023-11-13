@@ -30,5 +30,6 @@ func GenerateUniqueId() string {
 		word[i], word[j] = word[j], word[i]
 	})
 	now := time.Now().UTC()
-	return fmt.Sprintf("%010v-%010v-%s", now.Unix(), now.Nanosecond(), string(word))
+	timeFormatted := now.Format("06-01-02 15:04:05")
+	return fmt.Sprintf("%s-%s",timeFormatted, string(word))
 }
